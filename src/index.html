@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,49 @@
     <title>NewProject</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div>Powinno działać </div>
-    <div class="para">sprawdzam </div>
-    <div class="nowa">Działa</div>
+    <div class="toDo">
+        <form class="toDoNew">
+            <div class="toDoNew__row">
+                <header class="toDoNew__header">Dodaj nowe zadanie</header>
+            </div>
+            <div class="toDoNew__row">
+                <label class="toDoNew__label" for="toDoNew__input">Tytuł</label>
+                <input class="toDoNew__input" type="textarea" name="title" value="">
+            </div>
+            <div class="toDoNew__row">
+                <label class="toDoNew__label" for="toDoNew__textarea">Treść</label>
+                <textarea class="toDoNew__textarea" type="textarea" name="text" value=""></textarea>
+            </div>
+            <div class="toDoNew__row">
+                <button class="toDoNew__btn" type="submit">Dodaj</button>
+            </div>
+        </form>
+
+        <form class="toDoSearch">
+            <div class="toDoSearch__row">
+                <header class="toDoSearch__header">Szukaj zadania</header>
+            </div>
+            <div class="toDoSearch__row">
+                <label class="toDoSearch__label" for="toDoSearch__input">Podaj szukaną frazę</label>
+                <input class="toDoSearch__input" type="search" name="search" value="">
+            </div>
+            <div class="toDoSearch__row">
+                <button class="toDoSearch__btn" type="submit">Szukaj</button>
+            </div>
+        </form>
+
+        <article class="toDoWorks">
+            <div class="toDoWorks__row">
+                <div class="toDoWorks__header">Moje zadania</div>
+            </div>
+            <div class="toDoItem">
+
+            </div>
+        </article>
     </div>
     <script src="js/app.min.js"></script>
 </body>
+
 </html>
