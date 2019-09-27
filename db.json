@@ -1,0 +1,24 @@
+{
+  "toDoTask": [
+    {
+      "title": "Godzina i data",
+      "text": "Do zrobienia aktualna godzina i data wstawienia zadania i wysyłamy na serwer.",
+      "id": 5
+    },
+    {
+      "title": "Poprawić kodowanie ",
+      "text": "Poprawić kodowanie w saas i js files ",
+      "id": 6
+    },
+    {
+      "title": "Poprawić logi",
+      "text": "Poprawić logi i komunikaty błędów ",
+      "id": 7
+    },
+    {
+      "title": "Działa",
+      "text": "Fajnie że już działa.",
+      "id": 8
+    }
+  ]
+}

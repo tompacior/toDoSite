@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Tahoma, sans-serif;
     font-size: 12px;
 }
 body{
@@ -26,9 +26,27 @@ body{
         &__header{
             border-bottom: 1px solid rgba(0,0,0,.3);
             font-size: 20px;
+            text-transform: uppercase;
             text-align: center;
             //padding-top: 10px;
             padding-bottom: 20px;
+        }
+        &__btn{
+            border: 1px solid rgb(197, 89, 89);
+            border-radius: 0px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            //width: 150px;
+            height: 35px;
+            padding: 7px 20px;
+            color: white;
+            float: right;
+            display: block;
+            background: rgb(255, 64, 0);
+            cursor: pointer;
+            &:hover{
+                background: rgb(212, 68, 2);
+            }
         }
     }
     .toDoNew,
@@ -44,19 +62,6 @@ body{
             padding: 5px;
             border: 1px solid #ddd;
         }
-        &__btn{
-            border: 1px solid rgb(126, 126, 126);
-            border-radius: 2px;
-            margin-top: 10px;
-            padding: 5px 15px;
-            float: right;
-            display: block;
-            background: skyblue;
-            cursor: pointer;
-            &:hover{
-                background: cyan;
-            }
-        }
     }
     .toDoNew{
         &__textarea{
@@ -71,9 +76,6 @@ body{
         padding: 25px;
         background: white;
         box-shadow: 0px 0px 3px rgba(0,0,0,.4);
-        &__row{
-            overflow: hidden;
-        }
         &__header{
             border-bottom: 1px solid rgba(0,0,0,.3);
             font-size: 20px;
@@ -91,7 +93,7 @@ body{
         margin-top: 10px;
     }
     &__title{
-        border-left: 5px solid rgba(0,0,0,.8);
+        border-left: 5px solid rgb(255, 64, 0);
         float: left;
         margin-top: 3px;
         padding: 0px 10px;
@@ -105,10 +107,11 @@ body{
             border-radius: 0;
             background: rgba(49, 1, 1, 0.5);
             border: none;
+            text-transform: uppercase;
+            cursor: pointer;
             //border: 1px solid rgba(0,0,0,.5);
             &:hover{
-                background:  rgb(250, 2, 2);
-                box-shadow: 0px 0px 10px -3px black;
+                background:  rgb(255, 68, 1);//rgb(255, 36, 36);
             }
             &::before{
                 position: absolute;
