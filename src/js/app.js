@@ -33,7 +33,12 @@
             event.preventDefault();
             console.log("Pobrane dane z DOM: ", title.value, " Text: ", text.value);
             let newTask = new Task();
-            if (newTask.validate(title.value, text.value)) {
+            let newDate = new Date();
+            let date = `${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`;
+            let time = `${newDate.getHours()}:${newDate.getMinutes()}`;
+            console.log(" Data: ", date);
+            console.log("Time: ", time);
+            if (newTask.validate(title.value, text.value, date, time)) {
                 while (toDoItems.firstChild) {
                     toDoItems.removeChild(toDoItems.firstChild);
                 };
@@ -74,22 +79,28 @@
         this.jsonObject = {
             title: "",
             text: "",
-            id: 0
+            id: 0,
+            date: 0,
+            time: 0
         };
     };
-    Task.prototype.validate = function (title, text) {
+    Task.prototype.validate = function (title, text, date, time) {
         console.log("uruchomiona  Validate");
         if (title === "" & text === "") {
             return false;
         };
         this.jsonObject.title = title;
         this.jsonObject.text = text;
+        this.jsonObject.date = date;
+        this.jsonObject.time = time;
         return true;
     };
     Task.prototype.addTask = function (elem) {
         this.jsonObject.title = elem.title;
         this.jsonObject.text = elem.text;
         this.jsonObject.id = elem.id;
+        this.jsonObject.date = elem.date;
+        this.jsonObject.time = elem.time;
 
         //////task ///////////
         let task = document.createElement("article");
@@ -127,15 +138,14 @@
         clean.appendChild(clean_btn);
 
         //////task  Date and time ////////////
-        let newDate = new Date();
         let date = document.createElement("div");
         date.classList.add("task__date");
-        let dateNode = document.createTextNode(`${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`);
+        let dateNode = document.createTextNode(this.jsonObject.date);
         date.appendChild(dateNode);
 
         let time = document.createElement("div");
         time.classList.add("task__time");
-        let timeNode = document.createTextNode(`${newDate.getHours()}:${newDate.getMinutes()}`);
+        let timeNode = document.createTextNode(this.jsonObject.time);
         time.appendChild(timeNode);
 
         ////// task text ///////////
