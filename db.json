@@ -1,13 +1,6 @@
 {
   "toDoTask": [
     {
-      "title": "Data i czas",
-      "text": "Naprawiona data i czas",
-      "id": 14,
-      "date": "27.9.2019",
-      "time": "19:38"
-    },
-    {
       "title": "Kodowanie",
       "text": "Poprawić kodowanie  plików sass i js ",
       "id": 15,
@@ -15,25 +8,11 @@
       "time": "19:39"
     },
     {
-      "title": "dgfaf",
-      "text": "gadfgad",
+      "title": "Coś tam coś ",
+      "text": "Działa można sprawdzić",
       "id": 16,
-      "date": "27.9.2019",
-      "time": "19:39"
-    },
-    {
-      "title": "jhvhj",
-      "text": "jffvj",
-      "id": 17,
-      "date": "27.9.2019",
-      "time": "19:40"
-    },
-    {
-      "title": "vkghhhhhhhh",
-      "text": "hhjjjjjjjjjjjjjjjjjjjjjjgjvkk",
-      "id": 18,
-      "date": "27.9.2019",
-      "time": "19:40"
+      "date": "30.9.2019",
+      "time": "21:17"
     }
   ]
 }

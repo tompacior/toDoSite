@@ -11,7 +11,7 @@
     let searchWord = null;
     let refreshButton = null;
 
-    document.addEventListener('DOMContentLoaded', function (e) {
+    document.addEventListener('DOMContentLoaded', function () {
         title = document.querySelector(".toDoNew__input");
         text = document.querySelector(".toDoNew__textarea");
         toDoItems = document.querySelector(".toDoItems");
@@ -22,9 +22,6 @@
 
         function refresh() {
             let refreshTask = new Task();
-            while (toDoItems.firstChild) {
-                toDoItems.removeChild(toDoItems.firstChild);
-            };
             refreshTask.GET("");
         };
         refresh();
@@ -39,9 +36,6 @@
             console.log(" Data: ", date);
             console.log("Time: ", time);
             if (newTask.validate(title.value, text.value, date, time)) {
-                while (toDoItems.firstChild) {
-                    toDoItems.removeChild(toDoItems.firstChild);
-                };
                 newTask.POST();
                 title.value = "";
                 text.value = "";
@@ -55,9 +49,6 @@
             let searchTask = new Task();
             console.log("Szukaj: ", searchWord.value);
             if (searchWord.value !== "") {
-                while (toDoItems.firstChild) {
-                    toDoItems.removeChild(toDoItems.firstChild);
-                };
                 searchTask.GET(`?q=${searchWord.value}`);
             }
         });
@@ -68,7 +59,6 @@
                 console.log("Usuwam zadanie: ",element.srcElement.id);
                 let deleteTask = new Task();
                 deleteTask.DELETE(`/${element.srcElement.id}`);
-                refresh();
             };
         });
 
@@ -86,7 +76,7 @@
     };
     Task.prototype.validate = function (title, text, date, time) {
         console.log("uruchomiona  Validate");
-        if (title === "" & text === "") {
+        if (title === "") {
             return false;
         };
         this.jsonObject.title = title;
@@ -170,13 +160,27 @@
                 "Content-type": "application/json; charset=UTF-8"
             },
             body: JSON.stringify(this.jsonObject)
-        })
-            .then(res =>
-                res.json())
+            })
+            .then(res =>{
+                if(res.ok){
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                };
+            })
             .then(res => {
                 console.log("We send:");
                 console.log(res);
                 this.GET("");
+            })
+            .catch(error => {
+                if (error.status === 404) {
+                    console.log("Error: 404 Not Found");
+                } else if (error.status === 400) {
+                    console.log("Error: 400 Bad Request! Incorrect request ups...");
+                } else {
+                    console.log("Other error: ", error.status);
+                }
             });
     };
     Task.prototype.DELETE = function (number) {
@@ -191,7 +195,8 @@
                 }
             })
             .then(resp => {
-                console.log("Respond GET: ", resp);
+                console.log("Respond Delete: ", resp);
+                this.GET("");
             })
             .catch(error => {
                 if (error.status === 404) {
@@ -214,6 +219,9 @@
             })
             .then(resp => {
                 console.log("Respond GET: ", resp);
+                while (toDoItems.firstChild) {
+                    toDoItems.removeChild(toDoItems.firstChild);
+                };
                 for (let i = 0; i < resp.length; i++) {
                     this.addTask(resp[i]);
                 };
