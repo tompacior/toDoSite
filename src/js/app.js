@@ -65,7 +65,7 @@
     });
 
     function Task() {
-        this.myRequest = "http://localhost:3000/toDoTask";
+        this.myRequest = "https://my-json-server.typicode.com/tompacior/fakeServer/toDoTask"; //"http://localhost:3000/toDoTask";
         this.jsonObject = {
             title: "",
             text: "",

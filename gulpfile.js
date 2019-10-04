@@ -29,6 +29,20 @@ const config ={
     images:"./dist/images",
     css: "./dist/css",
     js: "./dist/js"
+  },
+  distF: {
+    base: "./dist/**/*.*",
+    fonts: "./dist/fonts",
+    images:"./dist/images",
+    css: "./dist/css",
+    js: "./dist/js"
+  },
+  docs: {
+    base: "./docs/",
+    fonts: "./docs/fonts",
+    images:"./docs/images",
+    css: "./docs/css",
+    js: "./docs/js"
   }
 }
 
@@ -109,9 +123,15 @@ function watchAll (){
   watch(config.app.sass, sassTask);
 }
 
+//copy everything to /docs folder for GitHub Page
+function docsFiles(done){
+  src(config.distF.base).pipe(dest(config.docs.base));
+  done();
+};
 
 
 
 //EXPORTS
 exports.watch =  watchAll;
+exports.docs = docsFiles;
 exports.default = browserSyncTask;
